@@ -1,0 +1,5 @@
+minor bug fixes
+--This line, and those below, will be ignored--
+
+M    R/mode_find_aux.R
+M    R/fit_somatic_muts.R
