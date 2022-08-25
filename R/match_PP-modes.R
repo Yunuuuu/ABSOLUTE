@@ -19,7 +19,7 @@ MatchPpModes = function(pp.calls, segobj_list) {
                        segobj_list[[i]])
     mode.ix[i] = res[1]
 
-    if (!is.na(res) && res[2]) {
+    if ((!is.na(res) && res[2])[[1L]]) {
       wrong.ix = c(wrong.ix, i)
     }
   }
