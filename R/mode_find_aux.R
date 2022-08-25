@@ -109,7 +109,7 @@ MargModeFinder <- function(obs, mut, dom1, dom2, Q, lambda.qz.res, pz, sigma.h,
       cur.par <- c(b.grid[i], d.grid[j])
       res <- RunOpt(cur.par, obs, dom1, dom2, lambda.qz.res,
                     pz, sigma.h, Q, verbose=verbose)
-      if (!is.na(res)) {
+      if (!is.null(res)) {
         mode.tab[(i - 1) * n.d + j, ] <- c(res[[1]], res[[2]], res[[3]])
       }
     }
@@ -128,13 +128,13 @@ MargModeFinder <- function(obs, mut, dom1, dom2, Q, lambda.qz.res, pz, sigma.h,
   mode.tab = rbind(mode.tab, res_1d)
     
   # try opt on SNVs only for diploid tumors
-  if (!is.na(mut)) {
+  if (!is.na(mut)[[1L]]) {
     alpha_dom = c(0.1, 1) 
     res_snv_only = run_diploid_snv_purity_opt(obs, mut$mut_CN_dat, 
                                               mut$Pi_som_theta_Q, mut$mut_class_W, 
                                               alpha_dom, verbose=verbose)
     
-    if (!is.na(res_snv_only)) {
+    if (!is.na(res_snv_only)[[1L]]) {
       if (verbose) {
         print("SNV_only opt: ")
         print(res_snv_only)
@@ -198,7 +198,7 @@ RunOpt <- function(cur.par, obs, dom1, dom2, lambda.qz.res, pz, sigma.h,
     if (verbose) {
       cat("!")
     }
-    res <- NA
+    res <- NULL
   }
   
   return(res)

@@ -31,7 +31,7 @@ FitSample = function(seg.obj, mut, Q, pi_theta_qz, sigma.h, tau.dom,
      mode.tab = res[["mode.tab"]]
    }
 
-   if (is.na(mode.tab))  {
+   if (is.na(mode.tab)[[1L]])  {
       return(list(mode.flag="ERROR"))
    }
 

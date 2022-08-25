@@ -21,14 +21,14 @@ PlotSeglenHist <- function(D, W, color.by, color.range=NA, x.max=NA,
   heights <- matrix(0, ncol=length(breaks), nrow=length(D))
   seg.colors <- matrix(0, ncol=length(breaks), nrow=length(D))
   
-  if (is.na(use.pal)) {
+  if (is.na(use.pal)[[1L]]) {
     col.scale <- 1000
     use.pal <- heat.colors(col.scale)
   } else {
     col.scale <- length(use.pal)
   }
   
-  if (is.na(color.range)) {
+  if (is.na(color.range)[[1L]]) {
     color.range <- range(color.by, na.rm=TRUE)
   }
   
